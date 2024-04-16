@@ -111,6 +111,11 @@ header {
   padding-bottom: 80px;
 }
 
+.head2{
+  background-color: var(--main-bg);
+  color: var(--blue-1);
+}
+
 .avatar {
   position: absolute;
   margin-left: auto;
@@ -189,6 +194,9 @@ header {
 
 .item-title{
   color: var(--blue-1);
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 0 important;
 }
 
 .ajout{
@@ -225,4 +233,12 @@ header {
 
 .nav-title:active{
   color: var(--blue-1);
+}
+
+.title1{
+  color: var(--blue-1);
+} 
+
+.month{
+  color: var(--secondary-text-color);
 }
