@@ -9,6 +9,8 @@
   --main-bg: #ECE6D3;
   --blue-1: #1D3A70;
   --light-gray: #F9FAFB;
+  --secondary-text-color:#6B7280;
+  --success-trans: #1DAB87;
 }
 
 
@@ -128,4 +130,75 @@ header {
 
 .action-items{
   cursor: pointer;
+}
+
+
+.notif{
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
+/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+/** {
+  scrollbar-width: thin;
+  scrollbar-color: #BFBFBF #DFE9EB;
+}*/
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #DFE9EB;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #BFBFBF;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #969696;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #6B6B6B;
+}
+
+.date{
+  color: var(--secondary-text-color);
+}
+
+.transaction{
+  color: var(--blue-1); 
+}
+
+.item-title{
+  color: var(--blue-1);
+}
+
+.icon-item{
+  background-color: var(--light-gray);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  
+}
+
+.type-transaction{
+  color:var(--secondary-text-color);
 }
