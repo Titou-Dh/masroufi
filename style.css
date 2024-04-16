@@ -1,12 +1,14 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Stardos Stencil;
+
 }
 
 
-:root{
-  --main-bg:#ECE6D3;
+:root {
+  --main-bg: #ECE6D3;
+  --blue-1: #1D3A70;
+  --light-gray: #F9FAFB;
 }
 
 
@@ -42,7 +44,8 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  border-radius: 30px;
+  height: 100%;
+
   background: linear-gradient(#edbc0dc6, rgb(214, 206, 206));
 }
 
@@ -95,6 +98,34 @@
   color: #1D3A70;
 }
 
-header{
+header {
   background-color: var(--main-bg);
+}
+
+.head {
+  background-color: var(--main-bg);
+  color: var(--blue-1);
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.avatar {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.nav-actions{
+  background-color: var(--light-gray);
+  margin-top: 60px;
+  color: var(--blue-1);
+  border-radius: 15px;
+  width: 90%;
+}
+
+.action-items{
+  cursor: pointer;
 }
