@@ -1,106 +1,100 @@
-*{
+* {
   margin: 0;
   padding: 0;
+  font-family: Stardos Stencil;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+
+:root{
+  --main-bg:#ECE6D3;
 }
 
 
 .iphone {
-  margin:30px auto;
-  border:10px solid black;
-  border-radius:40px;
-  width:320px;
-  height:90vh;
-  position:relative;
+  margin: 30px auto;
+  border: 10px solid black;
+  border-radius: 40px;
+  width: 320px;
+  height: 90vh;
+  position: relative;
 
-  box-shadow:0px 20px 15px #33333335;
+
+  box-shadow: 0px 20px 15px #33333335;
 
 }
+
 .notch {
-  z-index:50;
-  top:0;
-  left:62px;
-  position:absolute;
-  background:#000000;
-  width:200px;
-  height:30px;
-  border-radius:0px 0px 20px 20px;
+  z-index: 50;
+  top: 0;
+  translate: none;
+  left: 27%;
+  position: absolute;
+  background: #000000;
+  width: 150px;
+  height: 30px;
+  border-radius: 0px 0px 20px 20px;
 }
+
 .screen {
-  z-index:10;
+  z-index: 10;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  width:100%;
-  height:100%;
-  border-radius:30px;
-  overflow-y: scroll;
-  background:linear-gradient( #edbc0dc6, rgb(214, 206, 206));
+  width: 100%;
+  border-radius: 30px;
+  background: linear-gradient(#edbc0dc6, rgb(214, 206, 206));
 }
 
-.start_btn{
+.start_btn {
   background-color: #260465;
   height: 56px;
   width: 287px;
-  border-radius:16px;
-  font-family:Stardos Stencil;
+  border-radius: 16px;
+  font-family: Stardos Stencil;
   font-size: 30px;
   font-weight: bold;
   color: #E7DBB1;
   cursor: pointer;
   box-shadow: 0 6px #999;
 }
-.start_btn:hover{
-  background-color:#3e08a2df;
+
+.start_btn:hover {
+  background-color: #3e08a2df;
 }
+
 .start_btn:active {
-  background-color:#3e08a2df;
+  background-color: #3e08a2df;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-.camera{
+
+.camera {
   position: absolute;
-    bottom: 8px;
-    right: 20px;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    border: .2rem solid #1e1f22;
-    background: #447bb5a6;
+  bottom: 8px;
+  right: 20px;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: .2rem solid #1e1f22;
+  background: #447bb5a6;
 }
-.speaker{
+
+.speaker {
   position: absolute;
-    right: 3.9rem;
-    width: 5.2rem;
-    height: .6rem;
-    background: #333;
-    border-radius: .2rem;
+  top: 5px;
+  right: 3.9rem;
+  width: 50%;
+  height: .6rem;
+  background: #333;
+  border-radius: .2rem;
 }
-#datetime{
-  position: absolute;
-  top:-8px;
-  left:14px;
-  font-weight: bold;
-  font-size:14px ;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #282525;
-}
-.item1{
+
+.item1 {
   font-size: 12px;
-  color:#1D3A70;
+  color: #1D3A70;
 }
-.grp1 {
-  position: absolute;
-  height:160px ;
-  width:180px;
-  top: 6cm;
-  right: 50%;
-  transform: translate(50%, -50%);
+
+header{
+  background-color: var(--main-bg);
 }
