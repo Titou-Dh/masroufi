@@ -140,6 +140,7 @@ header {
 }
 
 
+
 /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
 /** {
   scrollbar-width: thin;
@@ -189,6 +190,15 @@ header {
   color: var(--blue-1);
 }
 
+.ajout{
+  color:  var(--success-trans);
+}
+
+.payement{
+  color: var(--blue-1);
+}
+
+
 .icon-item{
   background-color: var(--light-gray);
   padding: 5px;
@@ -201,4 +211,17 @@ header {
 
 .type-transaction{
   color:var(--secondary-text-color);
+}
+
+.nav-title{
+  color: var(--secondary-text-color);
+  font-size: 10px;
+}
+
+.nav-title:hover{
+  color: var(--blue-1);
+}
+
+.nav-title:active{
+  color: var(--blue-1);
 }
