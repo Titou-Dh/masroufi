@@ -267,3 +267,18 @@ header {
 .selected {
   font-weight: bold;
 }
+
+/*overwriting properties mta3 l bootstrap*/
+p{
+  margin: 0 !important;
+}
+
+/*pointer lel items fil profil page*/
+.item-prop{
+  cursor: pointer;
+}
+
+/*color mta3 l icons fel profil page*/
+i{
+  color: var(--blue-1);
+}
