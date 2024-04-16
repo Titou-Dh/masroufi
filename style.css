@@ -145,6 +145,14 @@ header {
   cursor: pointer;
 }
 
+.notif-light
+{
+  border: 2px solid var(--secondary-text-color);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
 
 
 /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
@@ -227,6 +235,10 @@ header {
   font-size: 10px;
 }
 
+.secondary-text-color{
+  color: var(--secondary-text-color);
+}
+
 .nav-title:hover{
   color: var(--blue-1);
 }
@@ -241,4 +253,17 @@ header {
 
 .month{
   color: var(--secondary-text-color);
+}
+
+.item-quot{
+  border: 2px solid var(--secondary-text-color);
+  border-radius: 10px;
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+}
+
+
+.selected {
+  font-weight: bold;
 }
