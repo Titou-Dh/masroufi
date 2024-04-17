@@ -259,7 +259,7 @@ header {
   border: 2px solid var(--secondary-text-color);
   border-radius: 10px;
   width: 120px;
-  height: 120px;
+  min-height: 60px;
   cursor: pointer;
 }
 
