@@ -4,7 +4,7 @@ function addPayment() {
     var prix = document.getElementById('prix').value;
 
     var xhr = new XMLHttpRequest();
-    var url = 'api/add_payment.php';
+    var url = 'api/ajout.php';
     var params = 'id_user=' + id_user + '&name=' + name_payement + '&prix=' + prix;
 
     xhr.open('POST', url, true);
