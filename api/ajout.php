@@ -30,7 +30,7 @@ if (mysqli_stmt_execute($stmt) && mysqli_stmt_execute($stmt_update_user_amount))
     echo "
     <script>
         Swal.fire({
-            title: 'Payment added successfully',
+            title: 'adds added successfully',
             icon: 'success',
             confirmButtonText: 'OK'
         }).then(function() {
@@ -44,4 +44,6 @@ if (mysqli_stmt_execute($stmt) && mysqli_stmt_execute($stmt_update_user_amount))
 mysqli_stmt_close($stmt_update_user_amount);
 mysqli_stmt_close($stmt);
 mysqli_close($conn);
+
+
 ?>
