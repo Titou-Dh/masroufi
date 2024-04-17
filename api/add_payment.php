@@ -15,13 +15,13 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO adds (id_user, add_name, amount) VALUES (?, ?, ?)";
+$sql = "INSERT INTO payments (id_user, name_payement, amount) VALUES (?, ?, ?)";
 
 
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "isd", $id_user, $name_p, $prix);
 
-$sql_update_user_amount = "UPDATE users SET solde = solde + ? WHERE id_user = ?";
+$sql_update_user_amount = "UPDATE users SET solde = solde - ? WHERE id_user = ?";
 $stmt_update_user_amount = mysqli_prepare($conn, $sql_update_user_amount);
 mysqli_stmt_bind_param($stmt_update_user_amount, "di", $prix, $id_user);
 
