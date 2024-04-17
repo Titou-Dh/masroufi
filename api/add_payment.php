@@ -6,7 +6,7 @@ $dbname = "masroufi";
 
 
 $id_user = $_POST['id_user'];
-$name = $_POST['name'];
+$name_p = $_POST['name'];
 $prix = $_POST['prix'];
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -15,21 +15,28 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Prepare SQL statement
-$sql = "INSERT INTO payments (id_user, id_element, payment_date , prix) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO payments (id_user, name_payement, amount) VALUES (?, ?, ?)";
 
-// Prepare and bind parameters
+
 $stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "iii", $id_user, $name, $prix);
+mysqli_stmt_bind_param($stmt, "isi", $id_user, $name_p, $prix);
 
-// Execute the statement
 if (mysqli_stmt_execute($stmt)) {
-    echo "Payment added successfully";
+    echo "
+    <script>
+        Swal.fire({
+            title: 'Payment added successfully',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then(function() {
+            window.location = '../home.html';
+        });
+    </script>   
+    ";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-// Close statement and connection
 mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
