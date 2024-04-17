@@ -282,3 +282,20 @@ p{
 i{
   color: var(--blue-1);
 }
+
+.ajout-epargne{
+  color: rgb(0, 178, 0);
+  font-weight: 700;
+}
+
+.item-tirelire{
+  color: var(--blue-1);
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0 important;
+}
+
+.transaction-tirelire{
+  color:var(--secondary-text-color);
+  font-size: 12px;
+}
