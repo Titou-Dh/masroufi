@@ -79,10 +79,18 @@
         class="item my-3 d-flex justify-content-between align-items-center px-2"
       >
         <div class="d-flex justify-content-between align-items-center">
+<<<<<<< Updated upstream
           <div class="d-flex flex-column justify-content-center">
             <div class="item-title">Café</div>
             <div class="type-transaction">payé</div>
           </div>
+=======
+            <div class="date">Aujourd’hui, 14 Mai </div>
+            <div class="transaction">Transactions <img src="assets/icons/greater-than.svg" alt=""></div>
+        </div>
+        <div id="items">
+
+>>>>>>> Stashed changes
         </div>
         <div class="payement">-1.700 Dt</div>
       </div>
@@ -134,11 +142,21 @@
 
     <div style="height: 50px"></div>
 
+<<<<<<< Updated upstream
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+=======
+
+
+    <div style="height: 50px;"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+>>>>>>> Stashed changes
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script src="assets/js/time.js"></script>
     <script>
@@ -146,6 +164,17 @@
             title: "il vous reste 10 lef !!!<br>  que vous pouvez dépenser aujourd’hui",
             icon: "question"
         });
+
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "api/read_transactions.php",
+                type: "GET",
+                success: function (response) {
+                    $('#items').html(response);
+                }
+            });
+        })
     </script>
   </body>
 </html>
