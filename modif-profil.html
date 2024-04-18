@@ -38,7 +38,7 @@
     <section class="px-2 pt-5 pb-3 d-flex align-items-center">
       <div
         class="notif"
-        style="width: min-content"
+        style="width: min-content; z-index: 100;"
         onclick="window.history.go(-1); return false;"
       >
         <img
@@ -49,18 +49,24 @@
       </div>
     </section>
     <div class="container mt-2">
-      <h1>Nom:</h1>
+      <h1>Prénom:</h1>
       <form class=" py-2">
         <div class="mb-3">
           <input
             type="text"
             class="form-control"
+            placeholder="Alex"
           />
         </div>
-        <h1>Prix :</h1>
+        <h1>Nom :</h1>
         <div class="mb-3">
         
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" placeholder="Dupres" />
+        </div>
+        <h1>Email :</h1>
+        <div class="mb-3">
+        
+          <input type="text" class="form-control" placeholder="alexdupres0n@gmail.com"/>
         </div>
         <div class="text-end d-flex justify-content-end my-5">
           <div class="text-center w-50">
@@ -70,7 +76,7 @@
           </div>
           <div class="text-center mx-2 w-50">
             <button type="button" class="btn btn-primary w-100">
-              Ajouter
+              Modifier
             </button>
           </div>
         </div>

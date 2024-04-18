@@ -272,6 +272,9 @@ header {
 p{
   margin: 0 !important;
 }
+h3{
+  margin: 0 !important;
+}
 
 /*pointer lel items fil profil page*/
 .item-prop{
