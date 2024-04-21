@@ -28,15 +28,7 @@ mysqli_stmt_bind_param($stmt_update_user_amount, "di", $prix, $id_user);
 
 if (mysqli_stmt_execute($stmt) && mysqli_stmt_execute($stmt_update_user_amount)) {
     echo "
-    <script>
-        Swal.fire({
-            title: 'adds added successfully',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        }).then(function() {
-            window.location = '../home.html';
-        });
-    </script>   
+    jfjf
     ";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
