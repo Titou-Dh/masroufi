@@ -10,10 +10,25 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT DATE_FORMAT(payment_date, '%d %M') AS month, name_payement AS name, 'payé' AS type, -amount AS price FROM payments 
+
+
+$sortColumn = isset($_GET['sort_column']) ? $_GET['sort_column'] : 'payment_date'; // Default to payment_date
+$sortOrder = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'DESC'; // Default to descending order
+
+$allowedColumns = ['payment_date', 'add_date']; 
+$allowedOrders = ['ASC', 'DESC']; 
+if (!in_array($sortColumn, $allowedColumns) || !in_array(strtoupper($sortOrder), $allowedOrders)) {
+    die("Invalid input for sorting."); 
+}
+
+
+$orderClause = "ORDER BY " . $sortColumn . " " . $sortOrder;
+
+$sql = "SELECT DATE_FORMAT(payment_date, '%d %M') AS payment_date, name_payement AS name, 'payé' AS type, -amount AS price FROM payments 
         UNION ALL 
-        SELECT DATE_FORMAT(add_date, '%d %M') AS month, add_name AS name, 'ajout' AS type, amount AS price FROM adds 
-        ORDER BY month DESC;";
+        SELECT DATE_FORMAT(add_date, '%d %M') AS add_date, add_name AS name, 'ajout' AS type, amount AS price FROM adds 
+        " . $orderClause;
+
 
 
 $result = mysqli_query($conn, $sql);
