@@ -25,6 +25,32 @@ function adds_ajout() {
 
     xhr.send(params);
 }
+function adds_epargne() {
+    var id_user = 1
+    var amount = document.getElementById('amount_add').value;
+
+    var xhr = new XMLHttpRequest();
+    var url = 'api/add_epargne.php';
+    var params = 'id_user=' + id_user +  '&amount=' + amount;
+
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'epargne added successfully!',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            }).then(function() {
+                window.location = 'home.html';
+            });
+        }
+    }
+
+    xhr.send(params);
+}
 
 
 
