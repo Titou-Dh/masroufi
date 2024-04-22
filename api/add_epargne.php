@@ -19,7 +19,7 @@ $sql = "INSERT INTO savings (id_user, amount) VALUES (?, ?)";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "id", $id_user, $amount);
 
-$sql_update_user_balance = "UPDATE users SET balance = balance - ? WHERE id_user = ?";
+$sql_update_user_balance = "UPDATE users SET solde = solde - ? WHERE id_user = ?";
 $stmt_update_user_balance = mysqli_prepare($conn, $sql_update_user_balance);
 mysqli_stmt_bind_param($stmt_update_user_balance, "di", $amount, $id_user);
 
