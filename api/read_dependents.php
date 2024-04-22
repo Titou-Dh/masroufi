@@ -30,9 +30,13 @@ if (mysqli_num_rows($result) > 0) {
 foreach ($dependents as $date => $dependent) {
     foreach ($dependent as $dep) {
         echo ("
-        <div class='item-quot d-flex justify-content-center align-items-center flex-column my-2'>    
-                <div>".$row['name']."</div>
+        <div id='".$dep['id']."' class='item-quot d-flex justify-content-center align-items-center flex-column my-2' onclick='quotList(this.id)'>    
+                <div>".$dep['name']."</div>
+                <div class='type-transaction'>
+                    ".$dep['price']." DT
+                </div>
         </div>");
+    
     }
 }
 
@@ -46,8 +50,8 @@ foreach ($dependents as $date => $dependent) {
         éléments.
         </div>
 
-      </a>
-  </div>";
+    </a>
+</div>";
 }
 
 mysqli_close($conn);

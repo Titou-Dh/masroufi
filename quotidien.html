@@ -50,25 +50,23 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             readDependents();
-            // Get all items
-            var items = document.querySelectorAll(".item-quot");
-
-            // Loop through each item
-            items.forEach(function (item) {
-                // Add click event listener to each item
-                item.addEventListener("click", function () {
-                    // Toggle the selected state of the clicked item
-                    this.classList.toggle("selected");
-                    // Change background color based on selection state
-                    if (this.classList.contains("selected")) {
-                        this.style.backgroundColor = "#ECE6D3"; // Change background color
-                    } else {
-                        this.style.backgroundColor = ""; // Reset background color
-                    }
-                });
-            });
+            // var items = document.querySelectorAll(".item-quot");
+            
+            // // Loop through each item
+            // items.forEach(function (item) {
+            //     // Add click event listener to each item
+            //     item.addEventListener("click", function () {
+            //         // Toggle the selected state of the clicked item
+            //         this.classList.toggle("selected");
+            //         // Change background color based on selection state
+            //         if (this.classList.contains("selected")) {
+            //             this.style.backgroundColor = "#ECE6D3"; // Change background color
+            //         } else {
+            //             this.style.backgroundColor = ""; // Reset background color
+            //         }
+            //     });
+            // });
         });
-
     </script>
 </body>
 

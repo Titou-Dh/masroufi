@@ -308,3 +308,40 @@ function readDependents() {
         .catch(error => console.error('Error:', error));
 }
 
+function inputDependents() {
+
+
+fetch("api/input_dependents.php", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ array: myArray })
+});
+
+}
+
+
+var quotL = [];
+
+function quotList(id) {
+    var item = document.getElementById(id);
+    var index = quotL.indexOf(id); // Check if id exists in the array
+
+    if (index !== -1) {
+        // If id exists in the array, remove it
+        quotL.splice(index, 1);
+    } else {
+        // If id does not exist in the array, add it
+        quotL.push(id);
+    }
+
+    item.classList.toggle("selected");
+    if (item.classList.contains("selected")) {
+        item.style.backgroundColor = "#ECE6D3";
+    } else {
+        item.style.backgroundColor = "";
+    }
+    console.log(quotL);
+}
+
