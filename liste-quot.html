@@ -25,7 +25,7 @@
     <header>
       <div
         class="d-flex justify-content-between w-100 fixed-top"
-        style="background-color: #ECE6D3"
+        style="background-color: #ece6d3"
       >
         <div id="datetime" class="h6 ms-3 mt-1"></div>
         <div class="mx-2">
@@ -53,7 +53,9 @@
       </div>
     </section>
     <main class="py-3 px-4">
-      <div
+      <div class="depense"></div>
+
+      <!-- <div
         class="d-flex w-100 justify-content-center align-items-center flex-column"
       >
         <img src="assets/img/add 2.svg" alt="" width="140" />
@@ -62,13 +64,13 @@
           Oups... il n'y a pas de données ici. Veuillez réessayer ou ajouter des
           éléments.
         </div>
-        <a href="modif-quot.html" class="w-75 shadow-lg">
-          <button class="btn btn-outline-secondary w-100 ">
-            Modifier
-          </button>
-        </a>
         
-      </div>
+      </div> -->
+      <a href="modif-quot.html" class="w-75 fixed-bottom m-auto my-3">
+        <button class="btn btn-outline-secondary w-100 ">
+          Ajouter
+        </button>
+      </a>
     </main>
     <div style="height: 50px"></div>
 
@@ -79,5 +81,11 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script src="assets/js/time.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script >
+      document.addEventListener("DOMContentLoaded", function (event) {
+        getDep();
+      });
+    </script>
   </body>
 </html>
