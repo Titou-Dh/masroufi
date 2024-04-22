@@ -312,3 +312,17 @@ i{
 a {
   text-decoration: none;
 }
+
+
+.sort-group{
+  width: 50%;
+}
+
+.sort{
+  width: 60px;
+}
+
+label{
+  display: inline-block;
+  width:60px
+}

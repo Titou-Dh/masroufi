@@ -56,15 +56,15 @@
     <main class="py-3 px-4 items">
         <div class="d-flex justify-content-between align-items-center">
             <div id="date" class="date"></div>
-            <div>
+            <div class="sort-group">
                 <label for="sort_column">Sort By:</label>
-                <select id="sort_column">
+                <select class="sort form-select-sm my-1" id="sort_column">
                     <option value="payment_date">Payment Date</option>
                     <option value="add_date">Add Date</option>
                 </select>
 
                 <label for="sort_order">Order:</label>
-                <select id="sort_order">
+                <select class="sort form-select-sm" id="sort_order">
                     <option value="DESC">Descending</option>
                     <option value="ASC">Ascending</option>
                 </select>
