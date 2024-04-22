@@ -12,7 +12,7 @@ if (!$conn) {
 
 
 
-$sortOrder = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'DESC'; // Default to descending order
+$sortOrder = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'DESC'; 
 
 $allowedOrders = ['ASC', 'DESC']; 
 if ( !in_array(strtoupper($sortOrder), $allowedOrders)) {
@@ -36,6 +36,7 @@ if (mysqli_num_rows($result) > 0) {
     $i = 0;
     while ($row = mysqli_fetch_assoc($result)) {
         $transactions[$i][] = array(
+            'date' => $row['date_trans'],
             'name' => $row['name'],
             'type' => $row['type'],
             'price' => $row['price']
@@ -51,7 +52,7 @@ if (mysqli_num_rows($result) > 0) {
                     <div class='d-flex justify-content-between align-items-center'>
                         <div class='d-flex flex-column  justify-content-center'>
                             <div class='item-title'>" . $trans['name'] . "</div>
-                            <div class='type-transaction'>" . $trans['type'] . "</div>
+                            <div class='type-transaction'>" . $trans['type'] . " le ".$trans['date']."</div>
                         </div>
                     </div>
                     <div class='payement'>" . $trans['price'] . "</div>

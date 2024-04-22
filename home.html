@@ -24,7 +24,7 @@
         <div class="d-flex justify-content-between align-items-center px-4 pt-5">
             <div>
                 bienvenue! <br />
-                <span class="h3">Alex Dupres</span>
+                <span class="h3" id="user_info"></span>
             </div>
             <div class="notif">
                 <img src="assets/icons/notification.svg" alt="" />
@@ -57,12 +57,6 @@
         <div class="d-flex justify-content-between align-items-center">
             <div id="date" class="date"></div>
             <div class="sort-group">
-                <label for="sort_column">Sort By:</label>
-                <select class="sort form-select-sm my-1" id="sort_column">
-                    <option value="payment_date">Payment Date</option>
-                    <option value="add_date">Add Date</option>
-                </select>
-
                 <label for="sort_order">Order:</label>
                 <select class="sort form-select-sm" id="sort_order">
                     <option value="DESC">Descending</option>
@@ -114,6 +108,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script src="assets/js/time.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
         var today = new Date();
 
@@ -139,28 +134,10 @@
         //     });
         // })
 
-        function getTransactions() {
-            var sortColumn = document.getElementById("sort_column").value;
-            var sortOrder = document.getElementById("sort_order").value;
-
-            var url = "api/read_transactions.php?sort_column=" + sortColumn + "&sort_order=" + sortOrder;
-
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("transactions").innerHTML = data;
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-
 
         document.addEventListener("DOMContentLoaded", function (event) {
             getTransactions();
-        });
-
-        document.getElementById("sort_column").addEventListener("change", function () {
-            getTransactions();
+            loadUserInfo();
         });
 
         document.getElementById("sort_order").addEventListener("change", function () {

@@ -107,4 +107,33 @@ function add_payement() {
 
     xhr.send(params);
 }
-3;
+
+
+function getTransactions() {
+
+    var sortOrder = document.getElementById("sort_order").value;
+
+    var url = "api/read_transactions.php?sort_order=" + sortOrder;
+
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("transactions").innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+
+
+function loadUserInfo() {
+
+    var url = "api/read_user_info.php";
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("user_info").innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+
+}

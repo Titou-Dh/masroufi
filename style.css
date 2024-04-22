@@ -228,6 +228,7 @@ header {
 
 .type-transaction{
   color:var(--secondary-text-color);
+  font-size: 11px;
 }
 
 .nav-title{
