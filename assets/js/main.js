@@ -155,7 +155,7 @@ function fillUserInfo() {
     fetch(url)
         .then(response => response.text())
         .then(data => {
-            document.getElementById("mail").innerHTML = data;
+            document.getElementById("info-perso").innerHTML = data;
         })
         .catch(error => console.error('Error:', error));
 }
