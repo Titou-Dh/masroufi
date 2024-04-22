@@ -26,7 +26,7 @@ mysqli_stmt_bind_param($stmt, "sssi", $nom, $prenom, $email, $id_user );
 
 if (mysqli_stmt_execute($stmt)) {
     echo "
-    jfjf
+        jfjf
     ";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
