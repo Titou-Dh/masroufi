@@ -208,6 +208,15 @@ function getSavings() {
         })
         .catch(error => console.error('Error:', error));
 }
+function getMonthlyExpenses() {
+    var url = "api/read_trans_mens.php";
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("monthly_expense").innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+}
 
 
 
@@ -222,6 +231,35 @@ function readModifProfil(){
 }
 
 
+function deleteExpense(expenseId) {
+    if(confirm("Are you sure you want to delete this expense?")) {
+        var xhr = new XMLHttpRequest();
+        var url = "api/delete_trans_mens.php";
+        var params = "expense_id=" + expenseId;
+
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = JSON.parse(xhr.responseText);
+                if(response.success) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Expense deleted successfully!",
+                        icon: "success",
+                        confirmButtonText: "Cool",
+                    }).then(function () {
+                        window.location = "home.html";
+                    });
+                } else {
+                    alert("Failed to delete expense: " + response.error);
+                }
+            }
+        };
+
+        xhr.send(params);
+    }
+}
 
 
 
