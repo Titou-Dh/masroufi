@@ -253,4 +253,6 @@ function modifUserInfo() {
             });
         }
     };
+
+    xhr.send(params);
 }
