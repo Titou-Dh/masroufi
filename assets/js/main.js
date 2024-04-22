@@ -175,6 +175,17 @@ function getMail() {
         .catch(error => console.error('Error:', error));
 
 }
+function getEpargne() {
+
+    var url = "api/get_epargne.php";
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("savings").innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+
+}
 
 
 function fillUserInfo() {
@@ -193,7 +204,7 @@ function getSavings() {
     fetch(url)
         .then(response => response.text())
         .then(data => {
-            document.getElementById("savings").innerHTML = data;
+            document.getElementById("saving").innerHTML = data;
         })
         .catch(error => console.error('Error:', error));
 }

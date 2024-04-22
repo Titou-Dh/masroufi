@@ -31,7 +31,7 @@
       <div class="d-flex justify-content-between align-items-center py-4">
           <div>
               Solde Epargne: <br>
-              <span class="h1">356.000 DT</span>
+              <span class="h1" id="savings"></span>
           </div>
           <img src="assets/icons/tirlire 1.svg" width="100" alt="">
       </div>
@@ -41,7 +41,7 @@
   <div class="text-center">
       <h3 class="title1">Transaction</h3>
   </div>
-  <div id="savings"></div>
+  <div id="saving"></div>
   
 </main>
     <div style="height: 50px;"></div>
@@ -55,6 +55,7 @@
     <script>
             document.addEventListener("DOMContentLoaded", function (event) {
             getSavings();
+            getEpargne();
         });
     </script>
 </body>
