@@ -7,7 +7,7 @@ $dbname = "masroufi";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+  die("Connection failed: " . mysqli_connect_error());
 }
 
 $sql = " SELECT * FROM dependents";
@@ -18,12 +18,12 @@ if (mysqli_num_rows($result) > 0) {
   $dependents = array();
   $i = 0;
   while ($row = mysqli_fetch_assoc($result)) {
-      $dependents[$i][] = array(
-          'id' => $row['id_dependent'],
-          'name' => $row['name'],
-          'price' => $row['price']
-      );
-      $i++;
+    $dependents[$i][] = array(
+      'id' => $row['id_dependent'],
+      'name' => $row['name'],
+      'price' => $row['price']
+    );
+    $i++;
   }
 
 
@@ -40,6 +40,7 @@ foreach ($dependents as $date => $dependent) {
     </div>");
   }
 }
+
 } else {
   echo "
   <div class='d-flex mt-5 w-100 justify-content-center align-items-center flex-column'>
@@ -55,8 +56,3 @@ foreach ($dependents as $date => $dependent) {
 }
 
 mysqli_close($conn);
-
-
-
-
-?>
