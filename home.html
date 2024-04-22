@@ -62,7 +62,7 @@
                     <option value="payment_date">Payment Date</option>
                     <option value="add_date">Add Date</option>
                 </select>
-            
+
                 <label for="sort_order">Order:</label>
                 <select id="sort_order">
                     <option value="DESC">Descending</option>
@@ -70,7 +70,7 @@
                 </select>
             </div>
         </div>
-        <div id="items">
+        <div id="transactions">
 
         </div>
 
@@ -129,15 +129,43 @@
         $('#date').html(formattedDate);
 
 
-        $(document).ready(function () {
-            $.ajax({
-                url: "api/read_transactions.php",
-                type: "GET",
-                success: function (response) {
-                    $('#items').html(response);
-                }
-            });
-        })
+        // $(document).ready(function () {
+        //     $.ajax({
+        //         url: "api/read_transactions.php",
+        //         type: "GET",
+        //         success: function (response) {
+        //             $('#items').html(response);
+        //         }
+        //     });
+        // })
+
+        function getTransactions() {
+            var sortColumn = document.getElementById("sort_column").value;
+            var sortOrder = document.getElementById("sort_order").value;
+
+            var url = "api/read_transactions.php?sort_column=" + sortColumn + "&sort_order=" + sortOrder;
+
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("transactions").innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            getTransactions();
+        });
+
+        document.getElementById("sort_column").addEventListener("change", function () {
+            getTransactions();
+        });
+
+        document.getElementById("sort_order").addEventListener("change", function () {
+            getTransactions();
+        });
     </script>
 </body>
 
