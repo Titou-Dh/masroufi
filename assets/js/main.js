@@ -159,3 +159,14 @@ function fillUserInfo() {
         })
         .catch(error => console.error('Error:', error));
 }
+
+
+function getSavings() {
+    var url = "api/read_epargne.php";
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("savings").innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+}
