@@ -27,18 +27,19 @@ if (mysqli_num_rows($result) > 0) {
   }
 
 
-
-      foreach ($dependents as $dep) {
-          echo ("
-          <div class='item my-3 d-flex justify-content-between align-items-center'>
-          <div class='d-flex justify-content-between align-items-center'>
-            <div class='d-flex flex-column'>
-              <div class='item-title'>" . $dep['name'] . "</div>
-            </div>
-          </div>
-          <div class='payement'>" . $dep['price'] . "</div>
-        </div>");
-      }
+foreach ($dependents as $date => $dependent) {
+  foreach ($dependent as $dep) {
+      echo ("
+      <div class='item my-3 d-flex justify-content-between align-items-center'>
+      <div class='d-flex justify-content-between align-items-center'>
+        <div class='d-flex flex-column'>
+          <div class='item-title'>" . $dep['name'] . "</div>
+        </div>
+      </div>
+      <div class='payement'>" . $dep['price'] . "</div>
+    </div>");
+  }
+}
 } else {
   echo "
   <div class='d-flex mt-5 w-100 justify-content-center align-items-center flex-column'>
