@@ -78,6 +78,33 @@ function adds_epargne() {
 
     xhr.send(params);
 }
+function add_monthly_expense() {
+    var id_user = 1;
+    var subject = document.getElementById("subject_add").value;
+    var amount = document.getElementById("monthly_amount_add").value;
+
+    var xhr = new XMLHttpRequest();
+    var url = "api/add_trans_mens.php";
+    var params = "id_user=" + id_user + "&subject=" + subject +"&amount=" + amount;
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            Swal.fire({
+                title: "Success!",
+                text: "Expense added successfully!",
+                icon: "success",
+                confirmButtonText: "Cool",
+            }).then(function () {
+                window.location = "home.html";
+            });
+        }
+    };
+
+    xhr.send(params);
+}
 
 function add_payement() {
     var id_user = 1;

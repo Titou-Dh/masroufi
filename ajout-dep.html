@@ -52,11 +52,11 @@
       <h1>Nom:</h1>
       <form class="py-2">
         <div class="mb-3">
-          <input type="text" class="form-control"  />
+          <input type="text" class="form-control" id="subject_add" />
         </div>
         <h1>Prix :</h1>
         <div class="mb-3">
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" id="monthly_amount_add" />
         </div>
         <div class="text-end d-flex justify-content-end my-5">
           <div class="text-center w-50">
@@ -72,7 +72,7 @@
             <button
               type="button"
               class="btn btn-primary w-100"
-              
+              onclick="add_monthly_expense()"
             >
               Ajouter
             </button>
