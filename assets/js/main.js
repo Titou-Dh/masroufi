@@ -197,3 +197,17 @@ function getSavings() {
         })
         .catch(error => console.error('Error:', error));
 }
+
+
+
+function readModifProfil(){
+    var url = "api/read_modif_profil.php";
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("inputs").innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
