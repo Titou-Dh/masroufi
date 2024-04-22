@@ -50,28 +50,26 @@
     </section>
     <div class="container mt-2">
       <h1>Ajouter votre Salaire :</h1>
-      <form class=" py-2">
+      <form class="py-2">
         <div class="mb-3">
-          <input
-            type="text"
-            class="form-control"
-          />
+          <input type="text" class="form-control" id="salaire" />
         </div>
         <h1>Ajouter votre Solde :</h1>
         <div class="mb-3">
-        
-          <input type="text" class="form-control" id="prix" name="prix" />
+          <input type="text" class="form-control" id="solde" />
         </div>
         <div class="text-end d-flex justify-content-end my-5">
           <div class="text-center w-50">
-            <button type="button" class="btn btn-outline-secondary w-100" onclick="window.history.go(-1); return false;">
+            <button
+              type="button"
+              class="btn btn-outline-secondary w-100"
+              onclick="window.history.go(-1); return false;"
+            >
               Annuler
             </button>
           </div>
           <div class="text-center mx-2 w-50">
-            <button type="button" class="btn btn-primary w-100">
-              Ajouter
-            </button>
+            <button type="button" class="btn btn-primary w-100" onclick="addSalaire()">Ajouter</button>
           </div>
         </div>
       </form>
