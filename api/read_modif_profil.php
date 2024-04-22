@@ -22,17 +22,17 @@ if (mysqli_num_rows($result) > 0) {
     echo "
         <h1>Prénom :</h1>
         <div class='mb-3'>
-        <input type='text' class='form-control' value='".$prenom."' />
+        <input type='text' class='form-control' id='prenom' value='".$prenom."' />
         </div>
         <h1>Nom :</h1>
         <div class='mb-3'>
 
-            <input type='text' class='form-control' value='".$nom."' />
+            <input type='text' class='form-control' id='nom' value='".$nom."' />
         </div>
         <h1>Email :</h1>
         <div class='mb-3'>
 
-            <input type='text' class='form-control' value='".$email."' />
+            <input type='text' class='form-control' id='email' value='".$email."' />
         </div>
         <div class='text-end d-flex justify-content-end my-5'>
             <div class='text-center w-50'>
@@ -41,7 +41,7 @@ if (mysqli_num_rows($result) > 0) {
             </button>
             </div>
             <div class='text-center mx-2 w-50'>
-                <button type='submit' onclick='modifUserInfo()'  class='btn btn-primary w-100'>
+                <button type='button' onclick='modifUserInfo()'  class='btn btn-primary w-100'>
                     Modifier
                 </button>
             </div>

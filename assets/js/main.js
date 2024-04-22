@@ -222,3 +222,48 @@ function readModifProfil(){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function modifUserInfo() {
+    var id_user = 1;
+    var nom = document.getElementById("nom").value;
+    var prenom = document.getElementById("prenom").value;
+    var email = document.getElementById("email").value;
+
+    var xhr = new XMLHttpRequest();
+    var url = "api/modif_user_info.php";
+    var params = "id_user=" + id_user + "&nom=" + nom + "&prenom=" + prenom + "&email=" + email;
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            Swal.fire({
+                title: "Success!",
+                text: "User info updated successfully!",
+                icon: "success",
+                confirmButtonText: "Cool",
+            }).then(function () {
+                window.location = "home.html";
+            });
+        }
+    };
+
+    xhr.send(params);
+}

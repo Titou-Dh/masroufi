@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 22 avr. 2024 à 13:51
+-- Généré le : lun. 22 avr. 2024 à 17:42
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -139,7 +139,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nom`, `prenom`, `email`, `salaire`, `solde`, `mdp`) VALUES
-(1, 'jhon ', 'doe', 'elelelel@gmail.com', 2700.000, 5127.000, 'elelelelelel');
+(1, 'gzez ', 'wld', 'elelelel@gmail.comdfsdfs', 2700.000, 5127.000, 'elelelelelel');
 
 -- --------------------------------------------------------
 
