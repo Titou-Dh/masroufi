@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 18 avr. 2024 à 13:08
+-- Généré le : lun. 22 avr. 2024 à 13:51
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -31,9 +31,17 @@ CREATE TABLE `adds` (
   `id_adds` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
   `add_name` varchar(255) NOT NULL,
-  `add_date` date DEFAULT current_timestamp(),
+  `add_date` datetime DEFAULT current_timestamp(),
   `amount` decimal(10,3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `adds`
+--
+
+INSERT INTO `adds` (`id_adds`, `id_user`, `add_name`, `add_date`, `amount`) VALUES
+(7, 1, 'project', '2024-04-22 11:21:38', 100.000),
+(8, 1, 'test', '2024-04-22 11:27:09', 20.000);
 
 -- --------------------------------------------------------
 
@@ -46,6 +54,13 @@ CREATE TABLE `dependents` (
   `name` varchar(255) DEFAULT NULL,
   `price` decimal(10,3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `dependents`
+--
+
+INSERT INTO `dependents` (`id_dependent`, `name`, `price`) VALUES
+(1, 'jdfmljkdsf', 120.000);
 
 -- --------------------------------------------------------
 
@@ -71,9 +86,17 @@ CREATE TABLE `payments` (
   `id_payment` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
   `name_payement` varchar(255) NOT NULL,
-  `payment_date` date DEFAULT current_timestamp(),
+  `payment_date` datetime DEFAULT current_timestamp(),
   `amount` decimal(10,3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `payments`
+--
+
+INSERT INTO `payments` (`id_payment`, `id_user`, `name_payement`, `payment_date`, `amount`) VALUES
+(19, 1, 'fhdkqn', '2024-04-22 11:21:49', 135.000),
+(20, 1, 'testtttt', '2024-04-22 11:27:27', 300.000);
 
 -- --------------------------------------------------------
 
@@ -85,8 +108,15 @@ CREATE TABLE `savings` (
   `id_savings` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
   `amount` decimal(10,3) DEFAULT NULL,
-  `saving_date` date DEFAULT NULL
+  `saving_date` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `savings`
+--
+
+INSERT INTO `savings` (`id_savings`, `id_user`, `amount`, `saving_date`) VALUES
+(2, 1, 200.000, '2024-04-22 12:30:51');
 
 -- --------------------------------------------------------
 
@@ -109,7 +139,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nom`, `prenom`, `email`, `salaire`, `solde`, `mdp`) VALUES
-(1, 'test', 'test', 'elelelel@gmail.com', 2700.000, 5684.000, 'elelelelelel');
+(1, 'jhon ', 'doe', 'elelelel@gmail.com', 2700.000, 5127.000, 'elelelelelel');
 
 -- --------------------------------------------------------
 
@@ -182,13 +212,13 @@ ALTER TABLE `user_dependents`
 -- AUTO_INCREMENT pour la table `adds`
 --
 ALTER TABLE `adds`
-  MODIFY `id_adds` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_adds` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `dependents`
 --
 ALTER TABLE `dependents`
-  MODIFY `id_dependent` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dependent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `monthly_expenses`
@@ -200,13 +230,13 @@ ALTER TABLE `monthly_expenses`
 -- AUTO_INCREMENT pour la table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id_payment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_payment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pour la table `savings`
 --
 ALTER TABLE `savings`
-  MODIFY `id_savings` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_savings` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `users`
