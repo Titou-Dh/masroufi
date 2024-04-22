@@ -57,22 +57,7 @@
       <img src="./assets/img/download-removebg-preview 1.png" alt="" />
     </div>
     <main class="py-5 px-4">
-      <div class="mb-2">
-        <h3>Prénom:</h3>
-        <p>Alex</p>
-      </div>
-      <div class="mb-2">
-        <h3>Nom:</h3>
-        <p>Dupres</p>
-      </div>
-      <div class="mb-2">
-        <h3>Email:</h3>
-        <p>alexdupres0n@gmail.com</p>
-      </div>
-      <div class="mb-2">
-        <h3>Password:</h3>
-        <p>************</p>
-      </div>
+      <div id="info-perso"></div>
       <a href="modif-profil.html">
         <div class="w-100 my-4">
           <button class="btn btn-primary w-100">Modifier</button>
@@ -89,5 +74,21 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script src="assets/js/time.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+    getTransactions();
+});
+
+// Call getTransactions() when the select inputs change
+document.getElementById("sort_column").addEventListener("change", function() {
+    getTransactions();
+});
+
+document.getElementById("sort_order").addEventListener("change", function() {
+    fillUserInfo();
+});
+    </script>
   </body>
+
 </html>

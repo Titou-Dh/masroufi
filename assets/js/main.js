@@ -137,3 +137,25 @@ function loadUserInfo() {
         .catch(error => console.error('Error:', error));
 
 }
+function getMail() {
+
+    var url = "api/get_mail.php";
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("mail").innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+
+}
+
+
+function fillUserInfo() {
+    var url = "api/profile_fill.php";
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("mail").innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+}
