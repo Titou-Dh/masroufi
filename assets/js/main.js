@@ -3,6 +3,28 @@ function adds_ajout() {
     var name_adds = document.getElementById("name_add").value;
     var prix = document.getElementById("prix_add").value;
 
+    if (!name_adds.trim()) {
+        Swal.fire({
+            title: "Error!",
+            text: "Name cannot be empty",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; 
+    }
+
+    if (!/^\d+(\.\d+)?$/.test(prix)) {
+        Swal.fire({
+            title: "Error!",
+            text: "Price must be a valid number",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return;
+    }
+
+    prix = parseFloat(prix);
+
     var xhr = new XMLHttpRequest();
     var url = "api/ajout.php";
     var params = "id_user=" + id_user + "&name=" + name_adds + "&prix=" + prix;
@@ -25,10 +47,37 @@ function adds_ajout() {
 
     xhr.send(params);
 }
+
 function add_dependents() {
     var id_user = 1;
     var name = document.getElementById("name_dependent").value;
     var price = document.getElementById("price_dependent").value;
+
+    // Validate inputs
+    if (!name.trim() || !price.trim()) {
+        // Display error message for empty inputs
+        Swal.fire({
+            title: "Error!",
+            text: "Name and Price cannot be empty",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; // Stop execution if inputs are empty
+    }
+
+    if (!/^\d+(\.\d+)?$/.test(price)) {
+        // Display error message for invalid price format
+        Swal.fire({
+            title: "Error!",
+            text: "Price must be a valid number",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; // Stop execution if price is invalid
+    }
+
+    // Convert price to a number
+    price = parseFloat(price);
 
     var xhr = new XMLHttpRequest();
     var url = "api/add_dependents.php";
@@ -41,7 +90,7 @@ function add_dependents() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             Swal.fire({
                 title: "Success!",
-                text: "dependent added successfully!",
+                text: "Dependent added successfully!",
                 icon: "success",
                 confirmButtonText: "Cool",
             }).then(function () {
@@ -52,9 +101,32 @@ function add_dependents() {
 
     xhr.send(params);
 }
+
 function adds_epargne() {
     var id_user = 1;
     var amount = document.getElementById("amount_add").value;
+
+    if (!amount.trim()) {
+        Swal.fire({
+            title: "Error!",
+            text: "Amount cannot be empty",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; 
+    }
+
+    if (!/^\d+(\.\d+)?$/.test(amount)) {
+        Swal.fire({
+            title: "Error!",
+            text: "Amount must be a valid number",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; 
+    }
+
+    amount = parseFloat(amount);
 
     var xhr = new XMLHttpRequest();
     var url = "api/add_epargne.php";
@@ -67,7 +139,7 @@ function adds_epargne() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             Swal.fire({
                 title: "Success!",
-                text: "epargne added successfully!",
+                text: "Epargne added successfully!",
                 icon: "success",
                 confirmButtonText: "Cool",
             }).then(function () {
@@ -78,10 +150,34 @@ function adds_epargne() {
 
     xhr.send(params);
 }
+
 function addSalaire() {
     var id_user = 1;
-    var salaire = document.getElementById("salaire").value;
-    var solde = document.getElementById("solde").value;
+    var salaire = document.getElementById("salaire").value.trim();
+    var solde = document.getElementById("solde").value.trim();
+
+    if (!salaire || !solde) {
+        Swal.fire({
+            title: "Error!",
+            text: "Salaire and Solde cannot be empty",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; 
+    }
+
+    if (!/^\d+(\.\d+)?$/.test(salaire) || !/^\d+(\.\d+)?$/.test(solde)) {
+        Swal.fire({
+            title: "Error!",
+            text: "Salaire and Solde must be valid numeric values",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; 
+    }
+
+    salaire = parseFloat(salaire);
+    solde = parseFloat(solde);
 
     var xhr = new XMLHttpRequest();
     var url = "api/ajout_salaire.php";
@@ -105,15 +201,41 @@ function addSalaire() {
 
     xhr.send(params);
 }
+
 function add_monthly_expense() {
     var id_user = 1;
-    var subject = document.getElementById("subject_add").value;
-    var amount = document.getElementById("monthly_amount_add").value;
+    var subject = document.getElementById("subject_add").value.trim();
+    var amount = document.getElementById("monthly_amount_add").value.trim();
+
+    // Validate inputs
+    if (!subject || !amount) {
+        // Display error message for empty inputs
+        Swal.fire({
+            title: "Error!",
+            text: "Subject and Amount cannot be empty",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; // Stop execution if inputs are empty
+    }
+
+    if (!/^\d+(\.\d+)?$/.test(amount)) {
+        // Display error message for invalid numeric value for amount
+        Swal.fire({
+            title: "Error!",
+            text: "Amount must be a valid numeric value",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; // Stop execution if amount is not a valid numeric value
+    }
+
+    // Convert amount to number
+    amount = parseFloat(amount);
 
     var xhr = new XMLHttpRequest();
     var url = "api/add_trans_mens.php";
-    var params =
-        "id_user=" + id_user + "&subject=" + subject + "&amount=" + amount;
+    var params = "id_user=" + id_user + "&subject=" + subject + "&amount=" + amount;
 
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -134,10 +256,33 @@ function add_monthly_expense() {
     xhr.send(params);
 }
 
+
 function add_payement() {
     var id_user = 1;
     var name_payement = document.getElementById("name_payement").value;
     var prix_payement = document.getElementById("prix_payement").value;
+
+    if (!name_payement.trim()) {
+        Swal.fire({
+            title: "Error!",
+            text: "Name cannot be empty",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return; 
+    }
+
+    if (!/^\d+(\.\d+)?$/.test(prix_payement)) {
+        Swal.fire({
+            title: "Error!",
+            text: "Price must be a valid number",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+        return;
+    }
+
+    prix_payement = parseFloat(prix_payement);
 
     var xhr = new XMLHttpRequest();
     var url = "api/add_payement.php";
@@ -151,7 +296,7 @@ function add_payement() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             Swal.fire({
                 title: "Success!",
-                text: "adds added successfully!",
+                text: "Payment added successfully!",
                 icon: "success",
                 confirmButtonText: "Cool",
             }).then(function () {
@@ -162,6 +307,7 @@ function add_payement() {
 
     xhr.send(params);
 }
+
 
 function getTransactions() {
     var sortOrder = document.getElementById("sort_order").value;
@@ -371,6 +517,15 @@ function readSolde() {
         .then((response) => response.text())
         .then((data) => {
             document.getElementById("solde_aff").innerHTML = data;
+        })
+        .catch((error) => console.error("Error:", error));
+}
+function readDaily() {
+    var url = "api/get_dep_quot.php";
+    fetch(url)
+        .then((response) => response.text())
+        .then((data) => {
+            document.getElementById("dep_quot").innerHTML = data;
         })
         .catch((error) => console.error("Error:", error));
 }
