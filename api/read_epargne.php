@@ -15,20 +15,20 @@ $sql = " SELECT * FROM savings WHERE id_user=1  order by saving_date desc";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-  $epargnes = array();
-  $i = 0;
-  while ($row = mysqli_fetch_assoc($result)) {
-      $epargnes[$i][] = array(
-          'date' => $row['saving_date'],
-          'amount' => $row['amount']
-      );
-      $i++;
-  }
+    $epargnes = array();
+    $i = 0;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $epargnes[$i][] = array(
+            'date' => $row['saving_date'],
+            'amount' => $row['amount']
+        );
+        $i++;
+    }
 
-  foreach ($epargnes as $date => $epargne) {
+    foreach ($epargnes as $date => $epargne) {
 
-      foreach ($epargne as $epar) {
-          echo ("
+        foreach ($epargne as $epar) {
+            echo ("
           <div class= 'item my-3 d-flex justify-content-between align-items-center'>
           <div class='d-flex justify-content-between align-items-center'>
               <div class=' m-1'>
@@ -43,10 +43,10 @@ if (mysqli_num_rows($result) > 0) {
       </div>
               
           ");
-      }
-  }
+        }
+    }
 } else {
-  echo "
+    echo "
   <div class='d-flex w-100 justify-content-center align-items-center flex-column'>
       <img src='assets/img/add 2.svg' alt='' width='140' />
       <span class='sad-bunny'>Aucune donnée trouvée...</span>
@@ -60,8 +60,3 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 mysqli_close($conn);
-
-
-
-
-?>
