@@ -10,7 +10,7 @@ function adds_ajout() {
             icon: "error",
             confirmButtonText: "OK",
         });
-        return; 
+        return;
     }
 
     if (!/^\d+(\.\d+)?$/.test(prix)) {
@@ -113,7 +113,7 @@ function adds_epargne() {
             icon: "error",
             confirmButtonText: "OK",
         });
-        return; 
+        return;
     }
 
     if (!/^\d+(\.\d+)?$/.test(amount)) {
@@ -123,7 +123,7 @@ function adds_epargne() {
             icon: "error",
             confirmButtonText: "OK",
         });
-        return; 
+        return;
     }
 
     amount = parseFloat(amount);
@@ -163,7 +163,7 @@ function addSalaire() {
             icon: "error",
             confirmButtonText: "OK",
         });
-        return; 
+        return;
     }
 
     if (!/^\d+(\.\d+)?$/.test(salaire) || !/^\d+(\.\d+)?$/.test(solde)) {
@@ -173,7 +173,7 @@ function addSalaire() {
             icon: "error",
             confirmButtonText: "OK",
         });
-        return; 
+        return;
     }
 
     salaire = parseFloat(salaire);
@@ -269,7 +269,7 @@ function add_payement() {
             icon: "error",
             confirmButtonText: "OK",
         });
-        return; 
+        return;
     }
 
     if (!/^\d+(\.\d+)?$/.test(prix_payement)) {
@@ -529,45 +529,84 @@ function readDaily() {
         })
         .catch((error) => console.error("Error:", error));
 }
-
 function inputDependents() {
-    fetch("api/input_dependents.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            array: quotL,
-            id_user: 1
-        })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.success) {
-            // Show success message using Swal
+
+
+    var xhr = new XMLHttpRequest();
+
+    var url = "api/input_dependents.php";
+
+    var myArray = quotL;
+
+    var jsonString = JSON.stringify(myArray);
+
+    xhr.open("POST", url, true);
+
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
             Swal.fire({
                 title: "Success!",
                 text: "Dependents added successfully!",
                 icon: "success",
-                confirmButtonText: "Cool"
-            }).then(() => {
-                // Redirect to home page after user confirms
-                window.location.href = "home.html";
+                confirmButtonText: "Cool",
+            }).then(function () {
+                window.location = "home.html";
             });
-        } else {
-            // Show error message using Swal
+        }else{
             Swal.fire({
                 title: "Error!",
-                text: "Failed to add dependents: " + data.error,
+                text: "Failed to add dependents: " + xhr.responseText,
                 icon: "error",
-                confirmButtonText: "OK"
+                confirmButtonText: "OK",
             });
         }
-    })
-    
+    };
+
+    // Send the request with the JSON string as the body
+    xhr.send(jsonString);
+
+    // fetch("api/input_dependents.php", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //         array: quotL,
+    //         id_user: 1
+    //     })
+    // })
+    // .then(response => {
+    //     if (!response.ok) {
+    //         throw new Error("Network response was not ok");
+    //     }
+    //     return response.json();
+    // })
+    // .then(data => {
+    //     if (data.success) {
+    //         // Show success message using Swal
+    //         Swal.fire({
+    //             title: "Success!",
+    //             text: "Dependents added successfully!",
+    //             icon: "success",
+    //             confirmButtonText: "Cool"
+    //         }).then(() => {
+    //             // Redirect to home page after user confirms
+    //             window.location.href = "home.html";
+    //         });
+    //     } else {
+    //         // Show error message using Swal
+    //         Swal.fire({
+    //             title: "Error!",
+    //             text: "Failed to add dependents: " + data.error,
+    //             icon: "error",
+    //             confirmButtonText: "OK"
+    //         });
+    //     }
+    // })
+    // .catch(error => {
+    //     console.error("Error:", error);
+    // });
 }

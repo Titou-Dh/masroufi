@@ -1,61 +1,46 @@
 <?php
-// input_dependents.php
+// Read the JSON string from the request body
+$jsonString = file_get_contents('php://input');
 
-// Check if the request method is POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Decode the JSON data sent in the request body
-    $data = json_decode(file_get_contents("php://input"), true);
+// Decode the JSON string into an array
+$array = json_decode($jsonString, true);
 
-    // Check if 'array' and 'id_user' fields are present in the JSON data
-    if (isset($data['array']) && isset($data['id_user'])) {
-        // Process the data (you can perform database operations here)
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "masroufi";
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "masroufi";
 
-        // Delete existing dependents for the user
-        $id_user = $data['id_user'];
-        $deleteQuery = "DELETE FROM user_dependents WHERE id_user = ?";
-        $stmt = $conn->prepare($deleteQuery);
-        $stmt->bind_param("i", $id_user);
-        $stmt->execute();
-        $stmt->close();
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-        // Insert new dependents
-        $insertQuery = "INSERT INTO user_dependents (id_user, dependent_id) VALUES (?, ?)";
-        $stmt = $conn->prepare($insertQuery);
-        $stmt->bind_param("ii", $id_user, $dependent_id);
-
-        foreach ($data['array'] as $dependent_id) {
-            $stmt->execute();
-        }
-
-        $stmt->close();
-        $conn->close();
-
-        // Return success response
-        $response = array('success' => true);
-    } else {
-        // If 'array' or 'id_user' fields are missing, return an error message
-        $response = array('success' => false, 'error' => 'Missing required fields');
-    }
-} else {
-    // If the request method is not POST, return an error message
-    $response = array('success' => false, 'error' => 'Invalid request method');
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-// Set the content type header to JSON
-header('Content-Type: application/json');
+// Delete existing dependents for the user
+$id_user = 1;
+$deleteQuery = "DELETE FROM user_dependents WHERE id_user = ?";
+$stmt = mysqli_prepare($conn, $deleteQuery);
+mysqli_stmt_bind_param($stmt, "i", $id_user);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
 
-// Output the JSON response
-echo json_encode($response);
+// Insert new dependents
+$insertQuery = "INSERT INTO user_dependents (id_user, id_dependent) VALUES (?, ?)";
+$stmt = mysqli_prepare($conn, $insertQuery);
+mysqli_stmt_bind_param($stmt, "ii", $id_user, $dependent_id);
+
+foreach ($array as $dependent_id) {
+    mysqli_stmt_execute($stmt);
+}
+
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
+
+
+// Output the array (for demonstration purposes)
+print_r($array);
 ?>
