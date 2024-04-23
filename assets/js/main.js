@@ -530,7 +530,6 @@ function readDaily() {
         .catch((error) => console.error("Error:", error));
 }
 
-
 function inputDependents() {
     fetch("api/input_dependents.php", {
         method: "POST",
@@ -542,28 +541,33 @@ function inputDependents() {
             id_user: 1
         })
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                Swal.fire({
-                    title: "Success!",
-                    text: "Dependents added successfully!",
-                    icon: "success",
-                    confirmButtonText: "Cool",
-                }).then(function () {
-                    window.location = "home.html";
-                });
-            } else {
-                throw new Error("Failed to add dependents: " + data.error);
-            }
-        })
-        .catch(error => {
-            // Handle fetch errors and server-side errors
-            alert("An error occurred: " + error.message);
-        });
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // Show success message using Swal
+            Swal.fire({
+                title: "Success!",
+                text: "Dependents added successfully!",
+                icon: "success",
+                confirmButtonText: "Cool"
+            }).then(() => {
+                // Redirect to home page after user confirms
+                window.location.href = "home.html";
+            });
+        } else {
+            // Show error message using Swal
+            Swal.fire({
+                title: "Error!",
+                text: "Failed to add dependents: " + data.error,
+                icon: "error",
+                confirmButtonText: "OK"
+            });
+        }
+    })
+    
 }

@@ -1,38 +1,61 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
+// input_dependents.php
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check if the request method is POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Decode the JSON data sent in the request body
+    $data = json_decode(file_get_contents("php://input"), true);
 
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
+    // Check if 'array' and 'id_user' fields are present in the JSON data
+    if (isset($data['array']) && isset($data['id_user'])) {
+        // Process the data (you can perform database operations here)
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "masroufi";
 
-$array = $_POST['array'];
-$id_user = $_POST['id_user'];
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "INSERT INTO user_dependents  VALUES (1, ?)";
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-$stmt = $conn->prepare($sql);
+        // Delete existing dependents for the user
+        $id_user = $data['id_user'];
+        $deleteQuery = "DELETE FROM user_dependents WHERE id_user = ?";
+        $stmt = $conn->prepare($deleteQuery);
+        $stmt->bind_param("i", $id_user);
+        $stmt->execute();
+        $stmt->close();
 
-if ($stmt === false) {
-    die("Error in preparing statement: " . $conn->error);
-}
+        // Insert new dependents
+        $insertQuery = "INSERT INTO user_dependents (id_user, dependent_id) VALUES (?, ?)";
+        $stmt = $conn->prepare($insertQuery);
+        $stmt->bind_param("ii", $id_user, $dependent_id);
 
-$stmt->bind_param("i", $value);
+        foreach ($data['array'] as $dependent_id) {
+            $stmt->execute();
+        }
 
-foreach ($array as $value) {
-    $result = $stmt->execute();
-    if ($result === false) {
-        die("Error in executing statement: " . $stmt->error);
+        $stmt->close();
+        $conn->close();
+
+        // Return success response
+        $response = array('success' => true);
+    } else {
+        // If 'array' or 'id_user' fields are missing, return an error message
+        $response = array('success' => false, 'error' => 'Missing required fields');
     }
-    echo "Inserted value: $value ";
+} else {
+    // If the request method is not POST, return an error message
+    $response = array('success' => false, 'error' => 'Invalid request method');
 }
 
-$stmt->close();
-$conn->close();
+// Set the content type header to JSON
+header('Content-Type: application/json');
 
-
+// Output the JSON response
+echo json_encode($response);
 ?>
