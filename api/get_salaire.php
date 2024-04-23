@@ -1,14 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include 'connect.php';
 
 $sql = "SELECT salaire FROM users WHERE id_user = 1";
 $stmt = mysqli_prepare($conn, $sql);

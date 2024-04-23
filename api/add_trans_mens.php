@@ -1,19 +1,13 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
+include 'connect.php';
 
 
 $id_user = $_POST['id_user'];
 $sujet = $_POST['subject'];
 $amount = $_POST['amount'];
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+
 
 $sql = "INSERT INTO monthly_expenses (id_user, sujet, amount) VALUES (?, ?, ?)";
 

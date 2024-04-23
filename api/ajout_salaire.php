@@ -1,15 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
 
+include 'connect.php';
 
 $id_user = $_POST['id_user'];
 $salaire = $_POST['salaire'];
 $solde = $_POST['solde'];
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());

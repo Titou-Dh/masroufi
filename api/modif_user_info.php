@@ -1,20 +1,13 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
 
+
+include 'connect.php';
 
 $id_user = $_POST['id_user'];
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $email = $_POST['email'];
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 $sql = "UPDATE users SET nom = ?, prenom = ?, email = ? WHERE id_user = ?";
 

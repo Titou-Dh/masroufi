@@ -1,14 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+include 'connect.php';
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 $sql = " SELECT * FROM savings WHERE id_user=1  order by saving_date desc";
 

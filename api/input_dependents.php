@@ -5,20 +5,8 @@ $jsonString = file_get_contents('php://input');
 // Decode the JSON string into an array
 $array = json_decode($jsonString, true);
 
+include 'connect.php';
 
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 // Delete existing dependents for the user
 $id_user = 1;

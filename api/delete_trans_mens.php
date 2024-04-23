@@ -1,14 +1,12 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
+
+
+include 'connect.php';
 
 // Check if expense ID is provided via POST request
 if(isset($_POST['expense_id'])) {
     $expense_id = $_POST['expense_id'];
 
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
 
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());

@@ -1,45 +1,37 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
+include 'connect.php';
+
 
 $sql = " SELECT * FROM dependents";
 
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-  $dependents = array();
-  $i = 0;
-  while ($row = mysqli_fetch_assoc($result)) {
-    $dependents[$i][] = array(
-      'id' => $row['id_dependent'],
-      'name' => $row['name'],
-      'price' => $row['price']
-    );
-    $i++;
-  }
+    $dependents = array();
+    $i = 0;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $dependents[$i][] = array(
+            'id' => $row['id_dependent'],
+            'name' => $row['name'],
+            'price' => $row['price']
+        );
+        $i++;
+    }
 
 
-foreach ($dependents as $date => $dependent) {
-    foreach ($dependent as $dep) {
-        echo ("
-        <div id='".$dep['id']."' class='item-quot d-flex justify-content-center align-items-center flex-column my-2' onclick='quotList(this.id)'>    
-                <div>".$dep['name']."</div>
+    foreach ($dependents as $date => $dependent) {
+        foreach ($dependent as $dep) {
+            echo ("
+        <div id='" . $dep['id'] . "' class='item-quot d-flex justify-content-center align-items-center flex-column my-2' onclick='quotList(this.id)'>    
+                <div>" . $dep['name'] . "</div>
                 <div class='type-transaction'>
-                    ".$dep['price']." DT
+                    " . $dep['price'] . " DT
                 </div>
         </div>");
-    
+        }
     }
-}
-
 } else {
     echo "
     <div class='d-flex mt-5 w-100 justify-content-center align-items-center flex-column'>

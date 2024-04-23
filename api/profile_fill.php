@@ -1,14 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "masroufi";
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include 'connect.php';
 
 $sql = "SELECT nom, prenom, email FROM users WHERE id_user = 1";
 $result = mysqli_query($conn, $sql);
