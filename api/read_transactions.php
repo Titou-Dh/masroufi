@@ -3,8 +3,6 @@
 include 'connect.php';
 
 
-
-
 $sortOrder = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'DESC'; 
 
 $allowedOrders = ['ASC', 'DESC']; 

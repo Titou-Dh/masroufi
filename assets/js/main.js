@@ -610,3 +610,41 @@ function inputDependents() {
     //     console.error("Error:", error);
     // });
 }
+
+
+
+
+
+
+
+
+
+function delete_dependents(expenseId) {
+    if (confirm("Are you sure you want to delete this expense?")) {
+        var xhr = new XMLHttpRequest();
+        var url = "api/delete_list_quot.php";
+        var params = "expense_id=" + expenseId;
+
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "quotidien deleted successfully!",
+                        icon: "success",
+                        confirmButtonText: "Cool",
+                    }).then(function () {
+                        window.location = "home.html";
+                    });
+                } else {
+                    alert("Failed to delete quotidien: " + response.error);
+                }
+            }
+        };
+
+        xhr.send(params);
+    }
+}
