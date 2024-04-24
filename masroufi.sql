@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 22 avr. 2024 à 17:42
+-- Généré le : mer. 24 avr. 2024 à 23:59
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -40,8 +40,7 @@ CREATE TABLE `adds` (
 --
 
 INSERT INTO `adds` (`id_adds`, `id_user`, `add_name`, `add_date`, `amount`) VALUES
-(7, 1, 'project', '2024-04-22 11:21:38', 100.000),
-(8, 1, 'test', '2024-04-22 11:27:09', 20.000);
+(13, 1, 'project', '2024-04-24 22:55:07', 150.000);
 
 -- --------------------------------------------------------
 
@@ -51,6 +50,7 @@ INSERT INTO `adds` (`id_adds`, `id_user`, `add_name`, `add_date`, `amount`) VALU
 
 CREATE TABLE `dependents` (
   `id_dependent` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `price` decimal(10,3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -59,8 +59,10 @@ CREATE TABLE `dependents` (
 -- Déchargement des données de la table `dependents`
 --
 
-INSERT INTO `dependents` (`id_dependent`, `name`, `price`) VALUES
-(1, 'jdfmljkdsf', 120.000);
+INSERT INTO `dependents` (`id_dependent`, `id_user`, `name`, `price`) VALUES
+(2, 1, 'coffe', 1.200),
+(3, 1, 'cake', 0.900),
+(4, 1, 'fanta', 1.700);
 
 -- --------------------------------------------------------
 
@@ -75,6 +77,13 @@ CREATE TABLE `monthly_expenses` (
   `amount` decimal(10,3) DEFAULT NULL,
   `expense_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `monthly_expenses`
+--
+
+INSERT INTO `monthly_expenses` (`id_monthly_expense`, `id_user`, `subject`, `amount`, `expense_date`) VALUES
+(3, 1, 'louer', 250.000, NULL);
 
 -- --------------------------------------------------------
 
@@ -94,9 +103,7 @@ CREATE TABLE `payments` (
 -- Déchargement des données de la table `payments`
 --
 
-INSERT INTO `payments` (`id_payment`, `id_user`, `name_payement`, `payment_date`, `amount`) VALUES
-(19, 1, 'fhdkqn', '2024-04-22 11:21:49', 135.000),
-(20, 1, 'testtttt', '2024-04-22 11:27:27', 300.000);
+
 
 -- --------------------------------------------------------
 
@@ -114,9 +121,6 @@ CREATE TABLE `savings` (
 --
 -- Déchargement des données de la table `savings`
 --
-
-INSERT INTO `savings` (`id_savings`, `id_user`, `amount`, `saving_date`) VALUES
-(2, 1, 200.000, '2024-04-22 12:30:51');
 
 -- --------------------------------------------------------
 
@@ -139,18 +143,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nom`, `prenom`, `email`, `salaire`, `solde`, `mdp`) VALUES
-(1, 'gzez ', 'wld', 'elelelel@gmail.comdfsdfs', 2700.000, 5127.000, 'elelelelelel');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user_dependents`
---
-
-CREATE TABLE `user_dependents` (
-  `id_user` int(11) NOT NULL,
-  `id_dependent` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(1, 'adem ', ' bouafia', 'elelelel@gmail.comdfsdfs', 1200.000, 900, 'testuser');
 
 --
 -- Index pour les tables déchargées
@@ -167,7 +160,8 @@ ALTER TABLE `adds`
 -- Index pour la table `dependents`
 --
 ALTER TABLE `dependents`
-  ADD PRIMARY KEY (`id_dependent`);
+  ADD PRIMARY KEY (`id_dependent`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Index pour la table `monthly_expenses`
@@ -198,13 +192,6 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Index pour la table `user_dependents`
---
-ALTER TABLE `user_dependents`
-  ADD PRIMARY KEY (`id_user`,`id_dependent`),
-  ADD KEY `id_dependent` (`id_dependent`);
-
---
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -212,31 +199,31 @@ ALTER TABLE `user_dependents`
 -- AUTO_INCREMENT pour la table `adds`
 --
 ALTER TABLE `adds`
-  MODIFY `id_adds` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_adds` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `dependents`
 --
 ALTER TABLE `dependents`
-  MODIFY `id_dependent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_dependent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `monthly_expenses`
 --
 ALTER TABLE `monthly_expenses`
-  MODIFY `id_monthly_expense` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_monthly_expense` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id_payment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_payment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT pour la table `savings`
 --
 ALTER TABLE `savings`
-  MODIFY `id_savings` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_savings` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -255,6 +242,12 @@ ALTER TABLE `adds`
   ADD CONSTRAINT `adds_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 
 --
+-- Contraintes pour la table `dependents`
+--
+ALTER TABLE `dependents`
+  ADD CONSTRAINT `dependents_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+
+--
 -- Contraintes pour la table `monthly_expenses`
 --
 ALTER TABLE `monthly_expenses`
@@ -271,13 +264,6 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `savings`
   ADD CONSTRAINT `savings_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
-
---
--- Contraintes pour la table `user_dependents`
---
-ALTER TABLE `user_dependents`
-  ADD CONSTRAINT `user_dependents_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`),
-  ADD CONSTRAINT `user_dependents_ibfk_2` FOREIGN KEY (`id_dependent`) REFERENCES `dependents` (`id_dependent`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
