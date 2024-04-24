@@ -648,3 +648,14 @@ function delete_dependents(expenseId) {
         xhr.send(params);
     }
 }
+
+
+function getMonthlyExpenses2() {
+    var url = "api/read_trans_mens2.php";
+    fetch(url)
+        .then((response) => response.text())
+        .then((data) => {
+            document.getElementById("mon_exp").innerHTML = data;
+        })
+        .catch((error) => console.error("Error:", error));
+}

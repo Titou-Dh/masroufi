@@ -9,7 +9,7 @@ $amount = $_POST['amount'];
 
 
 
-$sql = "INSERT INTO monthly_expenses (id_user, sujet, amount) VALUES (?, ?, ?)";
+$sql = "INSERT INTO monthly_expenses (id_user, subject, amount) VALUES (?, ?, ?)";
 
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "isd", $id_user, $sujet, $amount);

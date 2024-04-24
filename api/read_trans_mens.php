@@ -15,7 +15,7 @@ if (mysqli_num_rows($result) > 0) {
       $expenses[$i][] = array(
           'id' => $row['id_monthly_expense'],
           'date' => $row['expense_date'],
-          'sujet' => $row['sujet'],
+          'sujet' => $row['subject'],
           'amount' => $row['amount']
       );
       $i++;
