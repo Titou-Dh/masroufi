@@ -12,7 +12,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO dependents (name, price) VALUES (?, ?)";
+$sql = "INSERT INTO dependents (id_user, name, price) VALUES (1, ?, ?)";
 
 
 $stmt = mysqli_prepare($conn, $sql);
