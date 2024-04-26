@@ -22,7 +22,7 @@ mysqli_stmt_bind_param($stmt, "sd", $name, $price);
 
 if (mysqli_stmt_execute($stmt)) {
     echo "
-     ...
+        ...
     ";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
